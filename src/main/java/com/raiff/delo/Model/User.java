@@ -36,9 +36,9 @@ public class User {
     }
 
     public String getPassword() {
-        return email;
+        return password;
     }
-    public void setPassword(String email) {
-        this.email = email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
