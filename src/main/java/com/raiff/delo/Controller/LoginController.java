@@ -18,9 +18,12 @@ public class LoginController {
     private UserRepository userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public @ResponseBody String login(@RequestParam(name = "email") String email,
-                                      @RequestParam(name = "password") String password) throws ServletException {
+    public @ResponseBody String login(/*@RequestParam(name = "email") String email,
+                                      @RequestParam(name = "password") String password*/
+                                        @RequestBody User login) throws ServletException {
         String jwtToken;
+        String email = login.getEmail();
+        String password = login.getPassword();
 
         if (email == null || password == null) {
             throw new ServletException("Please fill in username and password");
