@@ -3,11 +3,15 @@ package com.raiff.delo.Controller;
 import com.raiff.delo.DatabaseAdapter.*;
 import com.raiff.delo.Model.*;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -28,6 +32,9 @@ public class MainController {
 
     @Autowired
     private TransactionRepository transactionRepository;
+
+    @Autowired
+    private OrderTransactionLinkRepository orderTransactionLinkRepository;
 
     @PostMapping(path="/add")
     public @ResponseBody String addNewUser (@RequestParam String name , @RequestParam String email, @RequestParam String password) {
@@ -87,6 +94,29 @@ public class MainController {
         transactionRepository.save(transaction);
         return "Saved";
     }
+
+    @PostMapping("/addtransactionfororder")
+    public @ResponseBody String AddNewTransactionForOrder(@RequestParam(value="order_id") Integer orderID) {
+        Order order = orderRepository.findByOrderId(orderID);
+        Card card = cardRepository.findByAccountId(order.getAccountId());
+
+        Transaction newTransaction = new Transaction();
+        newTransaction.setAccountId(order.getAccountId());
+        newTransaction.setCardId(card.getId());
+        newTransaction.setType(1);
+        newTransaction.setAmount(order.getTotalPrice().doubleValue());
+        newTransaction.setPostStatus(1);
+        newTransaction.setAccountFrom(order.getCustomerType().toString());
+        transactionRepository.save(newTransaction);
+
+        OrderTransactionLink newOrderTransactionLinkRepository = new OrderTransactionLink();
+        newOrderTransactionLinkRepository.setOrderId(orderID);
+        newOrderTransactionLinkRepository.setTransactionId(newTransaction.getTransactionId());
+        orderTransactionLinkRepository.save(newOrderTransactionLinkRepository);
+
+        return "Saved";
+    }
+
 
 }
 
