@@ -37,6 +37,12 @@ public class MainController {
         return userRepository.findAll();
     }
 
+    @PostMapping("/addaccount")
+    public @ResponseBody String addNewAccount(@RequestBody Account account) {
+        accountRepository.save(account);
+        return "Saved";
+    }
+
     @GetMapping("/cards")
     public @ResponseBody Iterable<Account> getAccounts() {
         return accountRepository.findAll();

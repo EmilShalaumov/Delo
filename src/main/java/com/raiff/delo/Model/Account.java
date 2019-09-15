@@ -12,6 +12,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private Integer userId;
     @Temporal(TemporalType.DATE)
     private Date openDate;
     @Temporal(TemporalType.DATE)
@@ -19,12 +20,20 @@ public class Account {
     private Integer number;
     private Double balance;
     private Integer status;
+    private Integer currency;
 
     public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Date getOpenDate() {
@@ -56,5 +65,12 @@ public class Account {
     }
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getCurrency() {
+        return currency;
+    }
+    public void setCurrency(Integer currency) {
+        this.currency = currency;
     }
 }
