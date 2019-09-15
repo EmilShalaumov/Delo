@@ -117,6 +117,16 @@ public class MainController {
         return "Saved";
     }
 
+    @GetMapping("/validateorder")
+    public @ResponseBody String validaateOrder(@RequestParam(value="orderid")Integer orderId) {
+        OrderTransactionLink orderTransactionLink = orderTransactionLinkRepository.findByOrderId(orderId);
+        if (orderTransactionLink != null) {
+            return "Order is paid";
+        } else {
+            return "Order is not paid";
+        }
+    }
+
 
 }
 
