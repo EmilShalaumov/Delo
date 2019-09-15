@@ -1,8 +1,10 @@
 package com.raiff.delo.Controller;
 
 import com.raiff.delo.DatabaseAdapter.AccountRepository;
+import com.raiff.delo.DatabaseAdapter.CardRepository;
 import com.raiff.delo.DatabaseAdapter.UserRepository;
 import com.raiff.delo.Model.Account;
+import com.raiff.delo.Model.Card;
 import com.raiff.delo.Model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class MainController {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private CardRepository cardRepository;
 
     @PostMapping(path="/add")
     public @ResponseBody String addNewUser (@RequestParam String name , @RequestParam String email, @RequestParam String password) {
@@ -43,9 +48,14 @@ public class MainController {
         return "Saved";
     }
 
-    @GetMapping("/cards")
+    @GetMapping("/accounts")
     public @ResponseBody Iterable<Account> getAccounts() {
         return accountRepository.findAll();
+    }
+
+    @GetMapping("/cards")
+    public @ResponseBody Iterable<Card> getCards() {
+        return cardRepository.findAll();
     }
 }
 
