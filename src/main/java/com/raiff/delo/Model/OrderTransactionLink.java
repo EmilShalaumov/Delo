@@ -8,14 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "orders_services_links")
+@Entity(name = "orders_transactions_links")
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class OrderServiceLink {
+public class OrderTransactionLink {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private Integer orderId;
-    private Integer serviceId;
+    private Integer transactionId;
 
     public Integer getId() {
         return id;
@@ -31,10 +31,10 @@ public class OrderServiceLink {
         this.orderId = orderId;
     }
 
-    public Integer getServiceId() {
-        return serviceId;
+    public Integer getTransactionId() {
+        return transactionId;
     }
-    public void setServiceId(Integer serviceId) {
-        this.serviceId = serviceId;
+    public void setTransactionId(Integer transactionId) {
+        this.transactionId = transactionId;
     }
 }
