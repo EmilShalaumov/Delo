@@ -40,10 +40,10 @@ public class Order {
         this.customerType = customerType;
     }
 
-    public Integer getPaymentForm() {
+    public Integer getFormOfPayment() {
         return formOfPayment;
     }
-    public void setPaymentForm(Integer formOfPayment) {
+    public void setFormOfPayment(Integer formOfPayment) {
         this.formOfPayment = formOfPayment;
     }
 
