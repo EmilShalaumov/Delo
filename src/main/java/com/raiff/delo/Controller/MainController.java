@@ -2,11 +2,14 @@ package com.raiff.delo.Controller;
 
 import com.raiff.delo.DatabaseAdapter.AccountRepository;
 import com.raiff.delo.DatabaseAdapter.CardRepository;
+import com.raiff.delo.DatabaseAdapter.OrderRepository;
 import com.raiff.delo.DatabaseAdapter.UserRepository;
 import com.raiff.delo.Model.Account;
 import com.raiff.delo.Model.Card;
+import com.raiff.delo.Model.Order;
 import com.raiff.delo.Model.User;
 
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +28,9 @@ public class MainController {
 
     @Autowired
     private CardRepository cardRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     @PostMapping(path="/add")
     public @ResponseBody String addNewUser (@RequestParam String name , @RequestParam String email, @RequestParam String password) {
@@ -53,9 +59,25 @@ public class MainController {
         return accountRepository.findAll();
     }
 
+    @PostMapping("/addcard")
+    public @ResponseBody Card addNewCard(@RequestBody Card card) {
+        return cardRepository.save(card);
+
+    }
+
     @GetMapping("/cards")
     public @ResponseBody Iterable<Card> getCards() {
         return cardRepository.findAll();
+    }
+
+    @PostMapping("/addorder")
+    public @ResponseBody Order addNewOrder(@RequestBody Order order) {
+        return orderRepository.save(order);
+    }
+
+    @GetMapping("/orders")
+    public @ResponseBody Iterable<Order> getOrders() {
+        return orderRepository.findAll();
     }
 }
 

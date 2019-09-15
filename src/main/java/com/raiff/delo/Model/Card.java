@@ -12,14 +12,14 @@ public class Card {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private Integer account_id;
+    private Integer accountId;
     @Temporal(TemporalType.DATE)
-    private Date open_date;
+    private Date openDate;
     @Temporal(TemporalType.DATE)
-    private Date expire_date;
+    private Date expireDate;
     private Integer number;
     private Integer status;
-    private Integer product_id;
+    private Integer productId;
 
     public Integer getId() {
         return id;
@@ -29,24 +29,24 @@ public class Card {
     }
 
     public Integer getAccountId() {
-        return account_id;
+        return accountId;
     }
-    public void setAccountId(Integer account_id) {
-        this.account_id = account_id;
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
     }
 
     public Date getOpenDate() {
-        return open_date;
+        return openDate;
     }
     public void setOpenDate(Date open_date) {
-        this.open_date = open_date;
+        this.openDate = open_date;
     }
 
     public Date getExpireDate() {
-        return expire_date;
+        return expireDate;
     }
-    public void setExpireDate(Date expire_date) {
-        this.expire_date = expire_date;
+    public void setExpireDate(Date expireDate) {
+        this.expireDate = expireDate;
     }
 
     public Integer getNumber() {
@@ -64,9 +64,9 @@ public class Card {
     }
 
     public Integer getProductId() {
-        return product_id;
+        return productId;
     }
     public void setProductId(Integer productId) {
-        this.product_id = product_id;
+        this.productId = productId;
     }
 }
