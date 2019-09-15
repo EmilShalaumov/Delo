@@ -19,6 +19,7 @@ public class Transaction {
     private Integer type;
     private Double amount;
     private Integer postStatus;
+    private String accountFrom;
 
     public Integer getTransactionId() {
         return id;
@@ -60,6 +61,13 @@ public class Transaction {
     }
     public void setPostStatus(Integer postStatus) {
         this.postStatus = postStatus;
+    }
+
+    public String getAccountFrom() {
+        return accountFrom;
+    }
+    public void setAccountFrom(String accountFrom) {
+        this.accountFrom = accountFrom;
     }
 
 }
