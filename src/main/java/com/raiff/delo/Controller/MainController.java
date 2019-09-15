@@ -1,13 +1,7 @@
 package com.raiff.delo.Controller;
 
-import com.raiff.delo.DatabaseAdapter.AccountRepository;
-import com.raiff.delo.DatabaseAdapter.CardRepository;
-import com.raiff.delo.DatabaseAdapter.OrderRepository;
-import com.raiff.delo.DatabaseAdapter.UserRepository;
-import com.raiff.delo.Model.Account;
-import com.raiff.delo.Model.Card;
-import com.raiff.delo.Model.Order;
-import com.raiff.delo.Model.User;
+import com.raiff.delo.DatabaseAdapter.*;
+import com.raiff.delo.Model.*;
 
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +25,9 @@ public class MainController {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
 
     @PostMapping(path="/add")
     public @ResponseBody String addNewUser (@RequestParam String name , @RequestParam String email, @RequestParam String password) {
@@ -79,5 +76,17 @@ public class MainController {
     public @ResponseBody Iterable<Order> getOrders() {
         return orderRepository.findAll();
     }
+
+    @GetMapping("/transactions")
+    public @ResponseBody Iterable<Transaction> getTransaction() {
+        return transactionRepository.findAll();
+    }
+
+    @PostMapping("/addtransaction")
+    public @ResponseBody String addNewtransactions(@RequestBody Transaction transaction) {
+        transactionRepository.save(transaction);
+        return "Saved";
+    }
+
 }
 
