@@ -17,6 +17,7 @@ public class Order {
     private Integer totalPrice;
     private Integer customerType;
     private Integer formOfPayment;
+    private Integer accountId;
 
     public Integer getOrderId() {
         return orderId;
@@ -44,5 +45,12 @@ public class Order {
     }
     public void setPaymentForm(Integer formOfPayment) {
         this.formOfPayment = formOfPayment;
+    }
+
+    public Integer getAccountId() {
+        return accountId;
+    }
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
     }
 }
