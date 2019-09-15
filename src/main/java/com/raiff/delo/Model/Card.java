@@ -17,7 +17,7 @@ public class Card {
     private Date openDate;
     @Temporal(TemporalType.DATE)
     private Date expireDate;
-    private Integer number;
+    private String number;
     private Integer status;
     private Integer productId;
 
@@ -49,10 +49,10 @@ public class Card {
         this.expireDate = expireDate;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

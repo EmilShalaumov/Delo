@@ -17,7 +17,7 @@ public class Account {
     private Date openDate;
     @Temporal(TemporalType.DATE)
     private Date expireDate;
-    private Integer number;
+    private String number;
     private Double balance;
     private Integer status;
     private Integer currency;
@@ -46,10 +46,10 @@ public class Account {
     public Date getExpireDate() { return expireDate; }
     public void setExpireDate(Date expireDate) { this.expireDate = expireDate; }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
